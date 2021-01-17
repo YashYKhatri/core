@@ -1,9 +1,9 @@
 """Tests for Barry config flow."""
+from unittest.mock import patch
+
 import pytest
 
 from homeassistant.components.barry.const import DOMAIN
-
-from tests.async_mock import patch
 
 # from tests.common import MockConfigEntry
 
