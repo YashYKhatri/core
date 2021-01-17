@@ -303,8 +303,8 @@ omit =
     homeassistant/components/folder_watcher/*
     homeassistant/components/foobot/sensor.py
     homeassistant/components/fortios/device_tracker.py
+    homeassistant/components/foscam/__init__.py
     homeassistant/components/foscam/camera.py
-    homeassistant/components/foscam/const.py
     homeassistant/components/foursquare/*
     homeassistant/components/free_mobile/notify.py
     homeassistant/components/freebox/__init__.py
@@ -361,7 +361,10 @@ omit =
     homeassistant/components/hangouts/hangouts_bot.py
     homeassistant/components/hangouts/hangups_utils.py
     homeassistant/components/harman_kardon_avr/media_player.py
-    homeassistant/components/harmony/*
+    homeassistant/components/harmony/const.py
+    homeassistant/components/harmony/data.py
+    homeassistant/components/harmony/remote.py
+    homeassistant/components/harmony/util.py
     homeassistant/components/haveibeenpwned/sensor.py
     homeassistant/components/hdmi_cec/*
     homeassistant/components/heatmiser/climate.py
@@ -583,7 +586,6 @@ omit =
     homeassistant/components/neato/vacuum.py
     homeassistant/components/nederlandse_spoorwegen/sensor.py
     homeassistant/components/nello/lock.py
-    homeassistant/components/nest/api.py
     homeassistant/components/nest/legacy/*
     homeassistant/components/netatmo/__init__.py
     homeassistant/components/netatmo/api.py
@@ -629,6 +631,11 @@ omit =
     homeassistant/components/omnilogic/__init__.py
     homeassistant/components/omnilogic/common.py
     homeassistant/components/omnilogic/sensor.py
+    homeassistant/components/ondilo_ico/__init__.py
+    homeassistant/components/ondilo_ico/api.py
+    homeassistant/components/ondilo_ico/const.py
+    homeassistant/components/ondilo_ico/oauth_impl.py
+    homeassistant/components/ondilo_ico/sensor.py
     homeassistant/components/onkyo/media_player.py
     homeassistant/components/onvif/__init__.py
     homeassistant/components/onvif/base.py
@@ -690,8 +697,6 @@ omit =
     homeassistant/components/pjlink/media_player.py
     homeassistant/components/plaato/*
     homeassistant/components/plex/media_player.py
-    homeassistant/components/plex/models.py
-    homeassistant/components/plex/sensor.py
     homeassistant/components/plum_lightpad/light.py
     homeassistant/components/pocketcasts/sensor.py
     homeassistant/components/point/*
@@ -706,7 +711,6 @@ omit =
     homeassistant/components/prowl/notify.py
     homeassistant/components/proxmoxve/*
     homeassistant/components/proxy/camera.py
-    homeassistant/components/ptvsd/*
     homeassistant/components/pulseaudio_loopback/switch.py
     homeassistant/components/pushbullet/notify.py
     homeassistant/components/pushbullet/sensor.py
@@ -790,11 +794,9 @@ omit =
     homeassistant/components/shodan/sensor.py
     homeassistant/components/shelly/__init__.py
     homeassistant/components/shelly/binary_sensor.py
-    homeassistant/components/shelly/cover.py
     homeassistant/components/shelly/entity.py
     homeassistant/components/shelly/light.py
     homeassistant/components/shelly/sensor.py
-    homeassistant/components/shelly/switch.py
     homeassistant/components/shelly/utils.py
     homeassistant/components/sht31/sensor.py
     homeassistant/components/sigfox/sensor.py
@@ -837,7 +839,8 @@ omit =
     homeassistant/components/soma/cover.py
     homeassistant/components/soma/sensor.py
     homeassistant/components/somfy/*
-    homeassistant/components/somfy_mylink/*
+    homeassistant/components/somfy_mylink/__init__.py
+    homeassistant/components/somfy_mylink/cover.py
     homeassistant/components/sonos/*
     homeassistant/components/sony_projector/switch.py
     homeassistant/components/spc/*
@@ -1090,6 +1093,9 @@ omit =
     homeassistant/components/zoneminder/*
     homeassistant/components/supla/*
     homeassistant/components/zwave/util.py
+    homeassistant/components/zwave_js/discovery.py
+    homeassistant/components/zwave_js/light.py
+    homeassistant/components/zwave_js/sensor.py
 
 [report]
 # Regexes for lines to exclude from consideration

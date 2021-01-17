@@ -67,6 +67,7 @@ FLOWS = [
     "flume",
     "flunearyou",
     "forked_daapd",
+    "foscam",
     "freebox",
     "fritzbox",
     "garmin_connect",
@@ -141,6 +142,7 @@ FLOWS = [
     "nws",
     "nzbget",
     "omnilogic",
+    "ondilo_ico",
     "onewire",
     "onvif",
     "opentherm_gw",
@@ -190,6 +192,7 @@ FLOWS = [
     "solarlog",
     "soma",
     "somfy",
+    "somfy_mylink",
     "sonarr",
     "songpal",
     "sonos",
@@ -239,5 +242,6 @@ FLOWS = [
     "yeelight",
     "zerproc",
     "zha",
-    "zwave"
+    "zwave",
+    "zwave_js"
 ]

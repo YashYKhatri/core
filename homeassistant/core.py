@@ -73,7 +73,6 @@ from homeassistant.exceptions import (
 from homeassistant.util import location, network
 from homeassistant.util.async_ import fire_coroutine_threadsafe, run_callback_threadsafe
 import homeassistant.util.dt as dt_util
-from homeassistant.util.thread import fix_threading_exception_logging
 from homeassistant.util.timeout import TimeoutManager
 from homeassistant.util.unit_system import IMPERIAL_SYSTEM, METRIC_SYSTEM, UnitSystem
 import homeassistant.util.uuid as uuid_util
@@ -86,7 +85,6 @@ if TYPE_CHECKING:
 
 
 block_async_io.enable()
-fix_threading_exception_logging()
 
 T = TypeVar("T")
 _UNDEF: dict = {}  # Internal; not helpers.typing.UNDEFINED due to circular dependency
@@ -118,7 +116,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 def split_entity_id(entity_id: str) -> List[str]:
-    """Split a state entity_id into domain, object_id."""
+    """Split a state entity ID into domain and object ID."""
     return entity_id.split(".", 1)
 
 

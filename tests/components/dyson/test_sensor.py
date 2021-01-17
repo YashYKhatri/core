@@ -1,6 +1,7 @@
 """Test the Dyson sensor(s) component."""
 import unittest
 from unittest import mock
+from unittest.mock import patch
 
 from libpurecool.dyson_pure_cool import DysonPureCool
 from libpurecool.dyson_pure_cool_link import DysonPureCoolLink
@@ -9,6 +10,8 @@ from homeassistant.components import dyson as dyson_parent
 from homeassistant.components.dyson import sensor as dyson
 from homeassistant.const import (
     ATTR_UNIT_OF_MEASUREMENT,
+    DEVICE_CLASS_HUMIDITY,
+    DEVICE_CLASS_TEMPERATURE,
     PERCENTAGE,
     STATE_OFF,
     TEMP_CELSIUS,
@@ -20,7 +23,6 @@ from homeassistant.setup import async_setup_component
 
 from .common import load_mock_device
 
-from tests.async_mock import patch
 from tests.common import get_test_home_assistant
 
 
@@ -203,6 +205,7 @@ class DysonTest(unittest.TestCase):
         assert sensor.unit_of_measurement == PERCENTAGE
         assert sensor.name == "Device_name Humidity"
         assert sensor.entity_id == "sensor.dyson_1"
+        assert sensor.device_class == DEVICE_CLASS_HUMIDITY
 
     def test_dyson_humidity_sensor_with_values(self):
         """Test humidity sensor with values."""
@@ -236,6 +239,7 @@ class DysonTest(unittest.TestCase):
         assert sensor.unit_of_measurement == TEMP_CELSIUS
         assert sensor.name == "Device_name Temperature"
         assert sensor.entity_id == "sensor.dyson_1"
+        assert sensor.device_class == DEVICE_CLASS_TEMPERATURE
 
     def test_dyson_temperature_sensor_with_values(self):
         """Test temperature sensor with values."""

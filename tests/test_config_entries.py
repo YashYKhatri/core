@@ -1,6 +1,7 @@
 """Test the config manager."""
 import asyncio
 from datetime import timedelta
+from unittest.mock import AsyncMock, patch
 
 import pytest
 
@@ -10,7 +11,6 @@ from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.setup import async_setup_component
 from homeassistant.util import dt
 
-from tests.async_mock import AsyncMock, patch
 from tests.common import (
     MockConfigEntry,
     MockEntity,
@@ -1523,7 +1523,7 @@ async def test_unique_id_ignore(hass, manager):
         result2 = await manager.flow.async_init(
             "comp",
             context={"source": config_entries.SOURCE_IGNORE},
-            data={"unique_id": "mock-unique-id"},
+            data={"unique_id": "mock-unique-id", "title": "Ignored Title"},
         )
 
     assert result2["type"] == data_entry_flow.RESULT_TYPE_CREATE_ENTRY
@@ -1537,6 +1537,7 @@ async def test_unique_id_ignore(hass, manager):
 
     assert entry.source == "ignore"
     assert entry.unique_id == "mock-unique-id"
+    assert entry.title == "Ignored Title"
 
 
 async def test_manual_add_overrides_ignored_entry(hass, manager):
@@ -1605,7 +1606,7 @@ async def test_unignore_step_form(hass, manager):
         result = await manager.flow.async_init(
             "comp",
             context={"source": config_entries.SOURCE_IGNORE},
-            data={"unique_id": "mock-unique-id"},
+            data={"unique_id": "mock-unique-id", "title": "Ignored Title"},
         )
         assert result["type"] == data_entry_flow.RESULT_TYPE_CREATE_ENTRY
 
@@ -1613,6 +1614,7 @@ async def test_unignore_step_form(hass, manager):
         assert entry.source == "ignore"
         assert entry.unique_id == "mock-unique-id"
         assert entry.domain == "comp"
+        assert entry.title == "Ignored Title"
 
         await manager.async_remove(entry.entry_id)
 
@@ -1649,7 +1651,7 @@ async def test_unignore_create_entry(hass, manager):
         result = await manager.flow.async_init(
             "comp",
             context={"source": config_entries.SOURCE_IGNORE},
-            data={"unique_id": "mock-unique-id"},
+            data={"unique_id": "mock-unique-id", "title": "Ignored Title"},
         )
         assert result["type"] == data_entry_flow.RESULT_TYPE_CREATE_ENTRY
 
@@ -1657,6 +1659,7 @@ async def test_unignore_create_entry(hass, manager):
         assert entry.source == "ignore"
         assert entry.unique_id == "mock-unique-id"
         assert entry.domain == "comp"
+        assert entry.title == "Ignored Title"
 
         await manager.async_remove(entry.entry_id)
 
@@ -1690,7 +1693,7 @@ async def test_unignore_default_impl(hass, manager):
         result = await manager.flow.async_init(
             "comp",
             context={"source": config_entries.SOURCE_IGNORE},
-            data={"unique_id": "mock-unique-id"},
+            data={"unique_id": "mock-unique-id", "title": "Ignored Title"},
         )
         assert result["type"] == data_entry_flow.RESULT_TYPE_CREATE_ENTRY
 
@@ -1698,6 +1701,7 @@ async def test_unignore_default_impl(hass, manager):
         assert entry.source == "ignore"
         assert entry.unique_id == "mock-unique-id"
         assert entry.domain == "comp"
+        assert entry.title == "Ignored Title"
 
         await manager.async_remove(entry.entry_id)
         await hass.async_block_till_done()
