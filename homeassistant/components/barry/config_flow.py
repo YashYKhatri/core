@@ -1,4 +1,5 @@
 """Adds config flow for Barry integration."""
+# pylint: disable=attribute-defined-outside-init
 from pybarry import Barry, InvalidToken
 import voluptuous as vol
 
@@ -44,9 +45,7 @@ class BarryConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     data_schema=data_schema,
                     errors=errors,
                 )
-            self.init_info = (
-                barry_connection  # pylint:disable=attribute-defined-outside-init
-            )
+            self.init_info = barry_connection
             return await self.async_step_metering_point()
 
         return self.async_show_form(
