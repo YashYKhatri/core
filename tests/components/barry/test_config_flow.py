@@ -65,6 +65,7 @@ async def test_create_entry(hass):
 
     flow = config_flow.BarryConfigFlow()
     flow.init_info = MagicMock()
+    flow.init_info.get_all_metering_points.return_value = [("mpid", "code")]
     flow.context = {}
     type(flow.init_info).access_token = CONF_ACCESS_TOKEN
     flow.hass = hass
@@ -74,6 +75,7 @@ async def test_create_entry(hass):
     print("result----->", result)
     assert result["type"] == data_entry_flow.RESULT_TYPE_CREATE_ENTRY
     assert result["data"]["access_token"] == CONF_ACCESS_TOKEN
+    assert result["data"]["priceCode"] == "code"
 
 
 async def test_user_config(hass):
