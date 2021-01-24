@@ -61,16 +61,12 @@ class BarryConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         data_schema = vol.Schema(
             {vol.Required("metering_point"): vol.In(mpids_display)}
         )
-        errors = {}
         if user_input:
-            try:
-                selected_meter = user_input["metering_point"]
-                price_code = ""
-                for mpid, code in mpids:
-                    if mpid == selected_meter:
-                        price_code = code
-            except InvalidToken:
-                errors[CONF_ACCESS_TOKEN] = "invalid_access_token"
+            selected_meter = user_input["metering_point"]
+            price_code = ""
+            for mpid, code in mpids:
+                if mpid == selected_meter:
+                    price_code = code
             self.hass.data["priceCode"] = price_code
 
             unique_id = "Qswrasdr"
