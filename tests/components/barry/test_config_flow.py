@@ -76,6 +76,17 @@ async def test_create_entry(hass):
     assert result["data"]["access_token"] == CONF_ACCESS_TOKEN
 
 
+async def test_user_config(hass):
+    """Test user config."""
+    flow = config_flow.BarryConfigFlow()
+    flow.hass = hass
+    user_input = {CONF_ACCESS_TOKEN: "valid"}
+
+    result = await flow.async_step_import(user_input)
+    assert result["type"] == data_entry_flow.RESULT_TYPE_FORM
+    assert result["step_id"] == SOURCE_USER
+
+
 async def test_flow_entry_already_exists(hass):
     """Test user input for config_entry that already exists."""
     first_entry = MockConfigEntry(domain="barry", data={CONF_ACCESS_TOKEN: "valid"})
