@@ -72,7 +72,6 @@ async def test_create_entry(hass):
     user_input = {"metering_point": "mpid"}
 
     result = await flow.async_step_metering_point(user_input=user_input)
-    print("result----->", result)
     assert result["type"] == data_entry_flow.RESULT_TYPE_CREATE_ENTRY
     assert result["data"]["access_token"] == CONF_ACCESS_TOKEN
     assert result["data"]["priceCode"] == "code"
