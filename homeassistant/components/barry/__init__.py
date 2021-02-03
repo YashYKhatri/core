@@ -2,11 +2,9 @@
 import logging
 
 from pybarry import Barry
-import voluptuous as vol
 
 from homeassistant import config_entries
 from homeassistant.const import CONF_ACCESS_TOKEN
-import homeassistant.helpers.config_validation as cv
 
 from .const import DOMAIN
 
@@ -14,10 +12,6 @@ PLATFORMS = [
     "sensor",
 ]
 
-CONFIG_SCHEMA = vol.Schema(
-    {DOMAIN: vol.Schema({vol.Required(CONF_ACCESS_TOKEN): cv.string})},
-    extra=vol.ALLOW_EXTRA,
-)
 
 _LOGGER = logging.getLogger(__name__)
 
